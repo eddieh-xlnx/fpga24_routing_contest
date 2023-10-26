@@ -45,13 +45,13 @@ jobs:
       - if: matrix.router == 'nxroute-poc'
         uses: actions/setup-python@v4
         with:
-          python-version: 'pypy3.8'
+          python-version: 'pypy3.7'
           cache: 'pip'
       - env:
           CXXFLAGS: "-std=c++14"
         run: |
             pip install "pypandoc<1.8"
-            curl https://raw.githubusercontent.com/capnproto/pycapnp/v0.6.4/requirements.txt | sed "s/ //g" | xargs pip install
+            curl https://raw.githubusercontent.com/capnproto/pycapnp/v0.6.4/requirements.txt | sed "s/ //g" | xargs -I {} pip install \"{}\"
             pip install --no-build-isolation "pycapnp<1"
       - name: Download xcvu3p.device (nxroute-poc only)
         if: matrix.router == 'nxroute-poc'
