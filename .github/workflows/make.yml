@@ -47,6 +47,8 @@ jobs:
         with:
           python-version: 'pypy3.10'
           cache: 'pip'
+      - run:
+           pip install cython==0.29.36
       - name: Download xcvu3p.device (nxroute-poc only)
         if: matrix.router == 'nxroute-poc'
         run:
