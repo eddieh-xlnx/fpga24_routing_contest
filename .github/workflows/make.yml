@@ -47,7 +47,9 @@ jobs:
         with:
           python-version: 'pypy3.10'
           cache: 'pip'
-      - run: |
+      - env:
+          CXXFLAGS: "-std=c++14"
+        run: |
             pip install "pycapnp<1"
       - name: Download xcvu3p.device (nxroute-poc only)
         if: matrix.router == 'nxroute-poc'
