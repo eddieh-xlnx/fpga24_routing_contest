@@ -45,7 +45,7 @@ jobs:
       - if: matrix.router == 'nxroute-poc'
         uses: actions/setup-python@v4
         with:
-          python-version: 'pypy3.8.16'
+          python-version: 'pypy3.8'
           cache: 'pip'
       - env:
           CXXFLAGS: "-std=c++14"
