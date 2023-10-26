@@ -51,7 +51,8 @@ jobs:
           CXXFLAGS: "-std=c++14"
         run: |
             pip install "pypandoc<1.8"
-            pip install "pycapnp<1"
+            curl https://raw.githubusercontent.com/capnproto/pycapnp/v0.6.4/requirements.txt | xargs pip install
+            pip install --no-build-isolation "pycapnp<1"
       - name: Download xcvu3p.device (nxroute-poc only)
         if: matrix.router == 'nxroute-poc'
         run:
