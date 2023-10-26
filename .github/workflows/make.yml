@@ -48,8 +48,7 @@ jobs:
           python-version: 'pypy3.10'
           cache: 'pip'
       - run: |
-            curl https://raw.githubusercontent.com/capnproto/pycapnp/master/requirements.txt | xargs pip install
-            pip install --no-build-isolation pycapnp
+            pip install pycapnp<1
       - name: Download xcvu3p.device (nxroute-poc only)
         if: matrix.router == 'nxroute-poc'
         run:
