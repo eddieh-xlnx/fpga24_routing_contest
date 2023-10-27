@@ -51,7 +51,7 @@ jobs:
           CXXFLAGS: "-std=c++14"
         run: |
             curl https://raw.githubusercontent.com/eddieh-xlnx/pycapnp/no-array/requirements.txt | xargs pip install
-            pip install git+https://github.com/eddieh/pycapnp@no-array
+            pip install git+https://github.com/eddieh-xlnx/pycapnp.git@no-array
       - name: Download xcvu3p.device (nxroute-poc only)
         if: matrix.router == 'nxroute-poc'
         run:
