@@ -503,9 +503,7 @@ class NxRouter:
                                                 # move its corresponding stub as this node's last branch
                                                 branches = rb.init('branches', len(nextNodes) + 1)
                                                 orphan = sinkPin2orphan.pop(sp)
-                                                # Adopting this orphan corrupts orphan.get().branches; copy it instead
-                                                #branches.adopt(len(branches) - 1, orphan)
-                                                branches[-1] = orphan.get()
+                                                branches.adopt(len(branches) - 1, orphan)
                                         else:
                                                 # Not a site pin, must have nextNodes
                                                 assert nextNodes
@@ -527,9 +525,7 @@ class NxRouter:
                                 # Compact the stubs list with all unrouted pins
                                 newStubList = net.init('stubs', len(sinkPin2orphan))
                                 for i,orphan in enumerate(sinkPin2orphan.values()):
-                                        # Adopting this orphan corrupts orphan.get().branches; copy it instead
-                                        #newStubList.adopt(i, orphan)
-                                        newStubList[i] = orphan.get()
+                                        newStubList.adopt(i, orphan)
 
                 # Initialize a new strList entry (capnp does not support resizing
                 # an existing list).
